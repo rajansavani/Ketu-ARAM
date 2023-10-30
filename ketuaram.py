@@ -132,9 +132,15 @@ async def aram(ctx):
     except ValueError:
         await ctx.send("Error: Not enough champions to choose from.")
         return
+
+    # Format the champions as a list and print each one on a new line
+    team1_champs_str = "\n".join(f"- {champ}" for champ in team1_champs)
+    team2_champs_str = "\n".join(f"- {champ}" for champ in team2_champs)
+
     # Send a message in each channel
-    await channel1.send(f'Welcome to Team 1! Here are your champions: {", ".join(team1_champs)}')
-    await channel2.send(f'Welcome to Team 2! Here are your champions: {", ".join(team2_champs)}')
+    await channel1.send(f'Welcome to Team 1! Here are your champions:\n{team1_champs_str}')
+    await channel2.send(f'Welcome to Team 2! Here are your champions:\n{team2_champs_str}')
+
 
 @bot.command()
 async def end(ctx):
